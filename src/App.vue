@@ -12,8 +12,11 @@ components: {FooterGuide},
 data() {
 return {};
 },
- mounted() {},
- methods:{}
+mounted() {
+  this.$store.dispatch('getAddress')  //地址信息
+ },
+ methods:{
+ }
 };
 </script>
 <style lang='stylus'>

@@ -1,11 +1,12 @@
 import ajax from './ajax';
 // params穿参数拼接在url后面
 //1、根据经纬度获取位置详情
-export const reqAddress = (geohash)=>ajax(`/position/${geohash}`)
+// let api = '/api'
+export const reqAddress = (geohash)=>ajax('/api/position/'+geohash)
 // [2、获取食品分类列表
-export const reqCategory = () =>ajax('/index_category')
+export const reqCategory = () =>ajax('/api/index_category')
 // [3、根据经纬度获取商铺列表
-export const reqShopList = (latitude,longitude) =>ajax('/shops',{latitude,longitude})
+export const reqShopList = (latitude,longitude) =>ajax('/api/shops',{latitude,longitude})
 // [4、根据经纬度和关键字搜索商铺列表
 export const reqSearchShops = (geohash,keyword)=>ajax('/search_shops',{geohash,keyword})
 // [5、获取一次性验证码

@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store';
 // import { Button } from 'vant';
 //关闭vue 的生产提示
 Vue.config.productionTip = false
@@ -12,7 +13,8 @@ Vue.config.productionTip = false
 // 创建vue实例
 new Vue({
   el: '#app',
-  router,
+  router,  //路由
+  store,   //vuex
   components: { App},
   template: '<App/>',
   // beforeCreate(){

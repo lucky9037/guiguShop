@@ -1,7 +1,8 @@
 import axios from 'axios';
-// 请求函数模块，返回值：promise对象（异步返回的数据是response.data）
+// 请求函数模块，返回值：promise对象（异步返回的数据是response。）
 export default function ajax(url = '',data = {},type='GET') {
     return new Promise(function (resolve,reject) {
+        let promise
         if(type == 'GET'){
             // 准备url，query参数
             let dataStr = ''

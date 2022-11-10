@@ -1,31 +1,23 @@
-'use strict'
+// 'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
 
 module.exports = {
-  devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5000', // 配置访问的服务器地址
-        pathRewrite: { '^/api': '' },  // 用于将请求中的 /api 字符串替换为空, 然后访问地址就能正确访问，若不添加此行配置，那么访问地址就变成了： http://localhost:5000/api/request_url，这样的请求就会出现 404 操作
-        ws: true, // 是否支持 webstocket, 默认是 true
-        changeOrigin: true // 用于控制请求头中的 host 值, 默认是 ture
-      },
-    }
-  },
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-    //   '/api':{
-    //     target:'http://localhost:5000',     //服务器的接口地址
-    //     ws:ture,                           //如果是https，需要开启这个选项
-    //     changeOrigin:ture,                    //是否跨域请求？ture
-    //     }
+      '/api': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/'
+        }
+      }
     },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
