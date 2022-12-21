@@ -6,6 +6,10 @@ import Search from '@/views/Search/Search'
 import Order from '@/views/Order/Order'
 import Profile from '@/views/Profile/Profile'
 import Login from '@/views/Login/Login'
+import Shop from '@/views/Shop/Shop'
+import ShopGoods from '@/views/Shop/ShopGoods/ShopGoods'
+import ShopInfo from '@/views/Shop/ShopInfo/ShopInfo'
+import ShopRating from '@/views/Shop/ShopRating/ShopRating'
  Vue.use(Router)
 
 export default new Router({
@@ -53,5 +57,28 @@ export default new Router({
       name: '登录',
       component: Login,
     },
+    {
+      path:'/shop',
+      name:'商店',
+      component:Shop,
+      children:[
+        {
+          path:'',
+          redirect:'/shop/goods'
+        },
+        {
+          path: '/shop/goods',
+          component: ShopGoods
+        },
+        {
+          path: '/shop/rating',
+          component: ShopRating
+        },
+        {
+          path: '/shop/info',
+          component: ShopInfo
+        }
+      ]
+    }
   ]
 })

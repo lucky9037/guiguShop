@@ -2,9 +2,13 @@
 import {
     RECEIVE_ADDRESS,
     RECEIVE_CATEGORY,
-    RECEIVE_SHOPS
+    RECEIVE_SHOPS,
+    RECEIVE_USER_INFO,
+    RECEIVE_GOODS,
+    RECEIVE_RATINGS,
+    RECEIVE_INFO,
 } from './mutations-type';
-import {reqAddress,reqCategory,reqShopList} from '../api';
+import {reqAddress,reqCategory,reqShopList,reqGoods,reqRatings,reqInfos} from '../api';
 export default { 
     // 获取异步地址
    async getAddress({commit,state}){
@@ -33,5 +37,38 @@ export default {
             const shops = res.data
             commit(RECEIVE_SHOPS,{shops})
         }
-    }
+    },
+    //获取商品
+    async getGoodsList({commit}){
+      const res = await reqGoods()
+      if(res.code==0){
+         const goods = res.data
+         commit(RECEIVE_GOODS,{goods})
+       }
+     },
+    //获取商品评价
+    async getGoodsRate({commit}){
+      const res = await reqRatings()
+      if(res.code==0){
+         const rate = res.data
+         commit(RECEIVE_RATINGS,{rate})
+       }
+     },
+     //获取商品信息
+     async getGoodsInfo({commit}){
+      const res = await reqInfos()
+      if(res.code==0){
+         const infos = res.data
+         console.log(infos);
+         commit(RECEIVE_INFO,{infos})
+       }
+     },
+
+    // 同步记录用户信息
+    recordUser({commit},userInfo){
+      commit(RECEIVE_USER_INFO,{userInfo})
+    },
+
+
+
 }

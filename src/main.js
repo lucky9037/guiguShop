@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store';
+
+import './mock/mockServer';   //加载moke即可
 // import { Button } from 'vant';
 //关闭vue 的生产提示
 Vue.config.productionTip = false
